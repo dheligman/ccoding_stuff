@@ -8,5 +8,6 @@ int main(){
     float hp = 9.75;
     printf("Hogwarts' Platform: %e %f %g\n", hp, hp, hp);
     // showing the different representations of floats.
-    //as common practice use %g for floating point types. Its just easier.
+    //as common practice use %g for floating point types. 
+    //Its just easier.
 }

@@ -16,4 +16,4 @@ int main() {
     *(lower + 7) = 'g';
 
      printf("\nlower: %s\nupper: %s", lower, upper);
-}
+} 

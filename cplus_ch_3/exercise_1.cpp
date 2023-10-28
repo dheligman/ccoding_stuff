@@ -29,7 +29,7 @@ int main() {
   printf("lower: %s\nupper: %s\n", lower, upper);
   
 
-  read_from(lower, 4, length_lower);
+  read_from(lower, 5, length_lower);
 
   printf("\n");
 

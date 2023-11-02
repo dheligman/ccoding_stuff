@@ -30,7 +30,7 @@ struct Avout {
     Avout(const char* name, int year_of_apert)
         : name{ name }, apert { year_of_apert } {
     }
-    void announce() const {
+    void announce() {
         printf("My name is %s and my next apert is %d.\n", name, apert.get_year());
     }
     const char* name;

@@ -34,16 +34,38 @@ struct SimpleString { // defining a simple string class
         size_t length;
 };
 
+struct SimpleStringOwner { // defining a SimpleStringOwner class
+    SimpleStringOwner(const char* x) // constructor that takes a constant string
+        : string{ 10 } { // initializing string to size 10
+            if (!string.append_line(x)) { // performing append_line to string with x and if its false, print not enough memory
+                throw std::runtime_error{ "Not enough memory!" };
+            }
+            string.print("Constructed"); // print the the string with a Constructed tag
+        }
+        ~SimpleStringOwner() { // defining a destructor that prints the string with an about to destroy tag
+            string.print("About to destroy");
+        }
+    private:
+        SimpleString string;
+};
+
+void fn_c() {
+    SimpleStringOwner c{ "ccccccccccc" };
+}
+void fn_b() {
+    SimpleStringOwner b{ "b" };
+    fn_c();
+}
 
 int main() {
-    SimpleString string{ 115 }; // initializing a simplestring string
-    string.append_line("Starbuck, whaddya hear"); // appending lines
-    string.append_line("Nothin' but the rain.");
-    string.print("A"); // printing the lines with tag A.
-    string.append_line("Grab your gun and bring the cat in."); // appending more lines
-    string.append_line("Aye-aye sir, coming home.");
-    string.print("B"); // printing the lines with tag B.
-    if (!string.append_line("Galactica!")) { // If there is no room for Gaactica! print the message below
-        printf("String was not big enough to append another message.");
+    try {
+        SimpleStringOwner a{ "a" };
+        fn_b();
+        SimpleStringOwner d{ "d" };
+    }
+    catch(const std::exception& e) {
+
+        
+        printf("Exception: %s\n", e.what());
     }
 }
